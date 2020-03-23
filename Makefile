@@ -23,7 +23,10 @@ build.elf.map: build.elf
 flash: build.hex
 	nrfjprog -f nrf52 --program build.hex --sectorerase -r
 
-.PHONY: clean flash
+hexdump: build.hex
+	objdump -s build.hex
+
+.PHONY: clean flash hexdump
 
 clean:
 	rm build.elf *.o
